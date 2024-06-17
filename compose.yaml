@@ -1,4 +1,15 @@
 services:
+  nginx:
+    build: ./docker/nginx
+    container_name: tutor_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - type: bind
+        source: ./rails7/public
+        target: /rails7/public
+    depends_on:
+      - rails7
   db:
     restart: always
     # image: mysql:8.0
